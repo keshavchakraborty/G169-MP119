@@ -1,0 +1,58 @@
+# MP119 findings — Stage 1 data audit completed; later stages remain untouched.
+group_id: "G169"
+problem_id: "MP119"
+
+data_issues:
+  leaking_column:
+    present: false
+    column: null
+  unit_mixup:
+    present: false
+    column: null
+    group_value: null
+    factor: null
+  sentinel_value:
+    present: false
+    column: null
+    value: null
+    count: null
+  duplicate_rows:
+    present: true
+    count: 39
+  stuck_sensor:
+    present: true
+    column: shift_hours
+    start_date: "2026-02-15"
+    end_date: "2026-03-02"
+  target_typos:
+    present: true
+    count: 10
+  spelling_variants:
+    present: false
+    column: null
+    true_levels: null
+
+# Leave the remaining sections for their assigned later stages.
+tracking:
+  experiment_name: null
+  best_run_id: null
+  registered_model_name: null
+  champion_version: null
+
+monitoring:
+  psi:
+    loom_age_yr: null
+    thread_count: null
+    power_cuts_min: null
+    weaver_exp_yr: null
+    humidity_pct: null
+    shift_hours: null
+  most_drifted_feature: null
+  mae_by_group:
+    'Shed 1': null
+    'Shed 2': null
+    'Shed 3': null
+  worst_served_group: null
+  mae_v1_on_check: null
+  mae_v2_on_check: null
+  decision: null
