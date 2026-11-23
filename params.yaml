@@ -1,0 +1,24 @@
+paths:
+  train: data/raw/train.csv
+  champion: models/model.joblib
+
+training:
+  validation_fraction: 0.20
+  random_state: 119
+  candidates:
+    ridge:
+      alpha: 1.0
+    gradient_boosting_shallow:
+      n_estimators: 150
+      max_depth: 2
+      learning_rate: 0.05
+    gradient_boosting_deeper:
+      n_estimators: 200
+      max_depth: 3
+      learning_rate: 0.05
+
+tracking:
+  uri: sqlite:///mlflow.db
+  experiment: mp119-stage-2
+  model: mp119-power-loom-output
+  artifact_location: models/mlflow

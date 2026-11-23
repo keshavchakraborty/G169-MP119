@@ -1,4 +1,4 @@
-# MP119 findings — Stage 1 data audit completed; later stages remain untouched.
+# MP119 findings — Stage 1 data audit and Stage 2 model tracking.
 group_id: "G169"
 problem_id: "MP119"
 
@@ -32,12 +32,11 @@ data_issues:
     column: null
     true_levels: null
 
-# Leave the remaining sections for their assigned later stages.
 tracking:
-  experiment_name: null
-  best_run_id: null
-  registered_model_name: null
-  champion_version: null
+  experiment_name: mp119-stage-2
+  best_run_id: 15a5e9da09ff4f7c992fb4f68f457cdb
+  registered_model_name: mp119-power-loom-output
+  champion_version: 1
 
 monitoring:
   psi:

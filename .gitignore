@@ -15,3 +15,7 @@
 /src/**/__pycache__/
 /sources/
 /AGENTS.md
+__pycache__/
+/.pytest_cache/
+/mlruns/
+/mlartifacts/
