@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mp119-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: mp119-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000

@@ -1,7 +1,5 @@
-# MP119 findings — Stage 1 data audit and Stage 2 model tracking.
-group_id: "G169"
-problem_id: "MP119"
-
+group_id: G169
+problem_id: MP119
 data_issues:
   leaking_column:
     present: false
@@ -22,8 +20,8 @@ data_issues:
   stuck_sensor:
     present: true
     column: shift_hours
-    start_date: "2026-02-15"
-    end_date: "2026-03-02"
+    start_date: '2026-02-15'
+    end_date: '2026-03-02'
   target_typos:
     present: true
     count: 10
@@ -31,27 +29,25 @@ data_issues:
     present: false
     column: null
     true_levels: null
-
 tracking:
   experiment_name: mp119-stage-2
   best_run_id: 15a5e9da09ff4f7c992fb4f68f457cdb
   registered_model_name: mp119-power-loom-output
   champion_version: 1
-
 monitoring:
   psi:
-    loom_age_yr: null
-    thread_count: null
-    power_cuts_min: null
-    weaver_exp_yr: null
-    humidity_pct: null
-    shift_hours: null
-  most_drifted_feature: null
+    loom_age_yr: 0.0274
+    thread_count: 0.0226
+    power_cuts_min: 3.7266
+    weaver_exp_yr: 0.0192
+    humidity_pct: 0.0324
+    shift_hours: 0.0339
+  most_drifted_feature: power_cuts_min
   mae_by_group:
-    'Shed 1': null
-    'Shed 2': null
-    'Shed 3': null
-  worst_served_group: null
-  mae_v1_on_check: null
-  mae_v2_on_check: null
-  decision: null
+    Shed 1: 7.9253
+    Shed 2: 3.3482
+    Shed 3: 3.4922
+  worst_served_group: Shed 1
+  mae_v1_on_check: 4.7367
+  mae_v2_on_check: 4.3752
+  decision: do_not_promote

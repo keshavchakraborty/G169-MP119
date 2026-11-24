@@ -19,3 +19,8 @@ __pycache__/
 /.pytest_cache/
 /mlruns/
 /mlartifacts/
+
+# Problem description and student handbook reference files
+GROUP.md
+PROBLEM.md
+STUDENT_HANDBOOK.md

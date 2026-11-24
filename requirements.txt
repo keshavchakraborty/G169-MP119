@@ -5,3 +5,7 @@ mlflow==3.10.1
 PyYAML==6.0.3
 scikit-learn==1.7.2
 pytest==8.4.2
+fastapi==0.165.0
+uvicorn==0.34.0
+pydantic==2.11.3
+httpx==0.28.1
