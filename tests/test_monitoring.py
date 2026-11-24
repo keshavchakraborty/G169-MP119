@@ -1,13 +1,12 @@
 """Tests for Stage 4 drift monitoring, retraining, and holdout prediction."""
 
+import sqlite3
 from pathlib import Path
-import mlflow
 import numpy as np
 import pandas as pd
 import yaml
-from mlflow import MlflowClient
 
-from src.mp119.monitoring import calculate_psi, compute_all_psi
+from src.mp119.monitoring import calculate_psi
 from src.mp119.cleaning import NUMERIC_FEATURES
 
 
@@ -70,18 +69,33 @@ def test_findings_yaml_monitoring_complete() -> None:
 
 def test_mlflow_model_versions_and_champion() -> None:
     assert DB_PATH.is_file(), "mlflow.db must exist"
-    mlflow.set_tracking_uri(f"sqlite:///{DB_PATH}")
-    client = MlflowClient()
+    conn = sqlite3.connect(DB_PATH)
+    cur = conn.cursor()
 
     model_name = "mp119-power-loom-output"
-    model = client.get_registered_model(model_name)
-    assert "champion" in model.aliases
+    # Check registered model champion alias
+    cur.execute(
+        "SELECT alias, version FROM registered_model_aliases WHERE name = ?",
+        (model_name,),
+    )
+    aliases = dict(cur.fetchall())
+    assert "champion" in aliases
 
-    versions = client.search_model_versions(f"name = '{model_name}'")
     # Must have 2 or more versions (v1 baseline and v2 retrained)
+    cur.execute(
+        "SELECT version, run_id FROM model_versions WHERE name = ?",
+        (model_name,),
+    )
+    versions = cur.fetchall()
     assert len(versions) >= 2
 
-    # Check that runs have data_sha256 logged
-    for v in versions:
-        run = client.get_run(v.run_id)
-        assert "data_sha256" in run.data.params
+    # Check that runs have data_sha256 logged in params
+    for version, run_id in versions:
+        cur.execute(
+            "SELECT value FROM params WHERE run_uuid = ? AND key = 'data_sha256'",
+            (run_id,),
+        )
+        row = cur.fetchone()
+        assert row is not None, f"Missing data_sha256 for run {run_id}"
+
+    conn.close()
