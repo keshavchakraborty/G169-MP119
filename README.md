@@ -6,7 +6,7 @@ SCSE3040 MLOps mini project covering data audit, model training, prediction serv
 - Problem: **MP119 — Power Loom Output (Bhopal)**
 - Members:
   - S24CSEU0164 — VanshChauhan
-  - S24CSEU0063 — LAKSHYASINGHPRATAP
+  - S24CSEU0063 — LAKSHYA PRATAP SINGH 
   - S24CSEU0008 — KeshavChakraborty
 
 ---
